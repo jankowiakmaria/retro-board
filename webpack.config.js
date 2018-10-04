@@ -17,6 +17,9 @@ module.exports = {
     filename: 'app.js'
   },
   devtool: 'eval-source-map',
+  externals: {
+    'Config': JSON.stringify(require('./config'))
+  },
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
     modules: [

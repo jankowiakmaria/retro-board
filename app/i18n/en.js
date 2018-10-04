@@ -14,6 +14,8 @@ export default {
   Post: {
     vote: 'vote',
     votes: 'votes',
+    generatedIssueDescription: 'Generated from retro-board.',
+    createIssue: 'Create issue',
     deleteButton: 'Delete',
     likedBy: 'Liked by:',
     noContent: '(This post has no content)',

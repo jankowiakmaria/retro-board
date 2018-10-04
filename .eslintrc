@@ -8,6 +8,7 @@
       "import/resolver": "webpack"
   },
   "rules": {
+      "import/extensions": 0,
       "indent": ["error", 2],
       "react/jsx-indent": ["error", 2],
       "react/jsx-first-prop-new-line": 0,

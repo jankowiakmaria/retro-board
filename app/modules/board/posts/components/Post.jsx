@@ -1,3 +1,5 @@
+/* eslint import/no-extraneous-dependencies:0 */
+import Config from 'Config';
 import PropTypes from 'prop-types';
 import React from 'react';
 import noop from 'lodash/noop';
@@ -97,6 +99,26 @@ const renderDislike = (post, currentUser, onDislike) => {
   return null;
 };
 
+// todo: project id,
+const renderCreateIssue = (post, currentUser, strings) => {
+  const description = strings.generatedIssueDescription;
+  const summary = post.content;
+
+  if (Config.Create_issue_base_url) {
+    return (
+      <a
+        href={`${Config.Create_issue_base_url}/secure/CreateIssueDetails!init.jspa?${Config.Create_issue_query_params}&summary=${summary}&description=${description}&pid=13601`}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        {strings.createIssue} {Config.testr}
+      </a>
+    );
+  }
+
+  return <div/>;
+};
+
 const Post = ({ post, currentUser, onEdit, onLike, onUnlike, onDelete, strings }) => (
   <div className={classNames(style.post, style[post.postType])}>
     <Card raised className={style.card}>
@@ -113,6 +135,7 @@ const Post = ({ post, currentUser, onEdit, onLike, onUnlike, onDelete, strings }
           { renderLike(post, currentUser, strings, onLike) }
           { renderDislike(post, currentUser, onUnlike) }
           { renderDelete(post, currentUser, strings, onDelete) }
+          { renderCreateIssue(post, currentUser, strings)}
         </div>
       </CardActions>
     </Card>
@@ -137,6 +160,7 @@ Post.defaultProps = {
   onUnlike: noop,
   onEdit: noop,
   strings: {
+    createIssue: 'Create issue',
     deleteButton: 'Delete',
     likedBy: 'Liked by:',
     noContent: '(This post has no content)',

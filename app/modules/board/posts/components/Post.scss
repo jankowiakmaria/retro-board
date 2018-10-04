@@ -30,6 +30,10 @@ div.post {
         }
 
         div.actions {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+
             button.like {
                 background-color: $color-like;
                 color: white;
@@ -49,6 +53,15 @@ div.post {
             button.deleteButton {
                 background-color: $palette-red-300;
                 color: white;
+            }
+
+            a {
+                color: $color-primary-dark;
+            }
+
+            :last-child {
+                margin-left: auto;
+                margin-top: auto;
             }
         }
     }
